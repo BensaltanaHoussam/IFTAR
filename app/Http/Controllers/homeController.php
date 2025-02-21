@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Recipe;
 
 
 use Illuminate\Http\Request;
@@ -15,6 +16,17 @@ class homeController extends Controller
       return view('hello', compact('posts'));
    }
 
+   public function statistiquesIndex(Request $request)
+   {
+
+      $totalComments = Comment::count();
+      $totalPosts = Post::count();
+      $totalRecipes = Recipe::count();
+
+      return view('statistiques', compact('totalComments', 'totalPosts', 'totalRecipes'));
+     
+   }
+
 
    public function store(Request $request)
    {
@@ -23,7 +35,7 @@ class homeController extends Controller
          'author_name' => 'required|string|max:255',
          'title' => 'required|string|max:255',
          'content' => 'required|string|max:5000',
-         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validation for image upload
+         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
       ]);
 
 

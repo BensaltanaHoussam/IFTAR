@@ -8,8 +8,8 @@
 
             <div class="hidden sm:flex  sm:gap-8 sm:items-center">
                 <a href="/" class="text-white border py-2 px-4 rounded-lg font-semibold  hover:text-yellow-600 mr-4">Home</a>
-                <a href="/iftar" class="text-white font-semibold hover:text-yellow-600 mr-4">Iftar</a>
-                <a href="/sohour" class="text-white  font-semibold hover:text-yellow-600 mr-4">Sohour</a>
+                <a href="/iftar" class="text-white font-semibold hover:text-yellow-600 mr-4">Recipes</a>
+                <a href="/statistiques" class="text-white  font-semibold hover:text-yellow-600 mr-4">Statistiques</a>
                 <a href="/about" class="text-white font-semibold hover:text-yellow-600">About</a>
             </div>
 

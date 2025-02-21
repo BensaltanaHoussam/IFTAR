@@ -71,13 +71,13 @@
     </div>
     <!-- Previous hero section remains the same -->
 
-    <div style="background-image: url('{{ asset('assets/img/bg2.jpg') }}')" class="bg-center bg-cover">
+    <div style="background-image: url('{{ asset('assets/img/bg14.jpg') }}')" class="bg-cover bg-center bg-black">
         <div class="flex flex-wrap gap-8 px-4 justify-center py-12">
             @foreach($posts as $post)
-                <div class="w-[800px] bg-white border border-yellow-300 rounded-lg shadow-2xl mb-6">
+                <div class="w-[800px] bg-black border border-yellow-300 rounded-lg shadow-2xl mb-6">
                     <!-- Post Header -->
-                    <div class="p-4 flex items-center gap-3">
-                        <img src="{{ asset('assets/img/th.jpg') }}" alt="User Avatar"
+                    <div class="p-4 flex items-center gap-3 text-white">
+                        <img src="{{ asset('assets/img/profile.jpg') }}" alt="User Avatar"
                             class="rounded-full w-10 h-10 object-cover">
                         <div>
                             <h3 class="font-semibold">{{ $post->author_name }}</h3>
@@ -87,8 +87,8 @@
 
                     <!-- Post Content -->
                     <div class="px-4 pb-3">
-                        <h4 class="font-semibold mb-2">{{ $post->title }}</h4>
-                        <p class="text-gray-700">{{ $post->content }}</p>
+                        <h4 class="font-semibold mb-2 text-white">{{ $post->title }}</h4>
+                        <p class="text-gray-300">{{ $post->content }}</p>
                     </div>
 
                     <!-- Post Image -->
@@ -101,33 +101,33 @@
                     @endif
 
                     <!-- Interaction Buttons -->
-                    <div class="p-4 flex items-center gap-6 border-t">
-                        <button class="flex items-center gap-2 hover:text-blue-600">
+                    <div class="p-4 flex items-center gap-6 border-t border-gray-700">
+                        <button class="flex items-center gap-2 text-white hover:text-blue-400">
                             <i class="ri-heart-line"></i>
                             <span>245</span> Likes
                         </button>
-                        <div class="flex items-center gap-2 text-gray-600">
+                        <div class="flex items-center gap-2 text-gray-400">
                             <i class="ri-message-2-line"></i>
                             {{ $post->comments ? $post->comments->count() : '0' }} Comments
                         </div>
-                        <button class="flex items-center gap-2 hover:text-blue-600">
+                        <button class="flex items-center gap-2 text-white hover:text-blue-400">
                             <i class="ri-share-line"></i>
                             Share
                         </button>
                     </div>
 
                     <!-- Comments Section -->
-                    <div class="border-t bg-gray-50 p-4">
+                    <div class="border-t bg-black p-4">
                         <!-- Comment Form -->
                         <form method="POST" action="{{ route('comment.post') }}" class="mb-4">
                             @csrf
                             <input type="hidden" name="post_id" value="{{ $post->id }}">
                             <div class="flex gap-2 mb-3">
                                 <input type="text" name="author_name" placeholder="Your name"
-                                    class="flex-1 px-3 py-2 border rounded-lg focus:outline-none focus:border-yellow-400"
+                                    class="flex-1 px-3 py-2 border rounded-lg bg-gray-700 text-white focus:outline-none focus:border-yellow-400"
                                     required>
                                 <input type="text" name="content" placeholder="Write a comment..."
-                                    class="flex-1 px-3 py-2 border rounded-lg focus:outline-none focus:border-yellow-400"
+                                    class="flex-1 px-3 py-2 border rounded-lg bg-gray-700 text-white focus:outline-none focus:border-yellow-400"
                                     required>
                                 <button type="submit" class="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-black">
                                     Post
@@ -139,9 +139,9 @@
                         <div class="space-y-3 h-[100px] overflow-y-scroll scrollbar-hidden">
                             @if($post->comments && $post->comments->count() > 0)
                                 @foreach($post->comments as $comment)
-                                    <div class="bg-white p-3 rounded-lg shadow-sm">
-                                        <div class="font-semibold text-sm">{{ $comment->author_name }}</div>
-                                        <div class="text-gray-700">{{ $comment->content }}</div>
+                                    <div class="bg-gray-900 p-3 rounded-lg shadow-sm">
+                                        <div class="font-semibold text-sm text-white">{{ $comment->author_name }}</div>
+                                        <div class="text-gray-300">{{ $comment->content }}</div>
                                         <div class="text-xs text-gray-500 mt-1">{{ $comment->created_at->diffForHumans() }}</div>
                                     </div>
                                 @endforeach
@@ -154,4 +154,6 @@
             @endforeach
         </div>
     </div>
+
+
 @endsection
