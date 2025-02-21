@@ -61,15 +61,4 @@ class homeController extends Controller
    }
 
 
-
-
-   public function getComments($post_id)
-   {
-    
-      $comments = Comment::where('post_id', $post_id)->get();
-
-      return response()->json([
-         'comments' => $comments
-      ]);
-   }
 }
